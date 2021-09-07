@@ -15,7 +15,7 @@ def get_trending_hashtags_location(location_id):
         raise Exception(response.status_code, response.text)
     return response.json()
 
-def get_available_location():
+def get_available_locations():
     endpoint = 'https://api.twitter.com/1.1/trends/available.json'
     response = requests.get(endpoint, auth=bearer_authorization, params={})
     return response.json()
