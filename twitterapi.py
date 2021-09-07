@@ -6,7 +6,7 @@ def bearer_authorization(a):
     a.headers['Authorization']=f'Bearer {bearertoken}'
     return a
 
-def get_trending_hashtag_location(location_id):
+def get_trending_hashtags_location(location_id):
     endpoint='https://api.twitter.com/1.1/trends/place.json'
     params={'id':location_id}
     response=requests.get(endpoint,auth=bearer_authorization,params=params)
