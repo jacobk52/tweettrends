@@ -13,11 +13,21 @@ def get_trending_hashtags_location(location_id):
     response=requests.get(endpoint,auth=bearer_authorization,params=params)
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
-    return response.json()
+    response_json = response.json()
+    return [{
+        'name':h['name'],
+        'tweet_volume':h['tweet_volume']
+    } for h in response_json[0]['trends']]
 
 def get_available_locations():
     endpoint = 'https://api.twitter.com/1.1/trends/available.json'
     response = requests.get(endpoint, auth=bearer_authorization, params={})
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
-    return response.json()
+    response_json = response.json()
+    return [{
+        'name':l['name'],
+        'location_id':l['woeid'],
+        'country':l['country'],
+        'country_code':l['countryCode']
+    } for l in response_json]
