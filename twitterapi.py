@@ -31,5 +31,3 @@ def get_available_locations():
         'country':l['country'],
         'country_code':l['countryCode']
     } for l in response_json]
-
-print(get_trend_location(2972)[0])
