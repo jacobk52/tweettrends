@@ -7,6 +7,15 @@ def bearer_authorization(a):
     a.headers['Authorization']=f'Bearer {bearertoken}'
     return a
 
+def get_tweet_info_by_query(query):
+    endpoint = 'https://api.twitter.com/2/tweets/search/recent'
+    params = {'query':query,'max_results':15}
+    response = requests.get(endpoint, auth=bearer_authorization, params=params)
+    if response.status_code != 200:
+        raise Exception(response.status_code, response.text)
+    response_json = response.json()
+    return [d['text'] for d in response_json['data']]
+
 
 def get_trends_by_location(location_id):
     endpoint='https://api.twitter.com/1.1/trends/place.json'
