@@ -9,7 +9,7 @@ def bearer_authorization(a):
 
 def get_tweet_info_by_query(query):
     endpoint = 'https://api.twitter.com/2/tweets/search/recent'
-    params = {'query':query,'max_results':15}
+    params = {'query':query,'max_results':10}
     response = requests.get(endpoint, auth=bearer_authorization, params=params)
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
@@ -40,3 +40,5 @@ def get_available_locations():
         'country':l['country'],
         'country_code':l['countryCode']
     } for l in response_json]
+
+print(get_tweet_info_by_query('ronaldo')[0])
