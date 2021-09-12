@@ -1,7 +1,7 @@
 import requests
 import os
 
-bearertoken=os.environ.get('TWITTERAPIBEARERTOKEN')
+bearertoken=os.environ.get('TWITTER_API_BEARER_TOKEN')
 
 def bearer_authorization(a):
     a.headers['Authorization']=f'Bearer {bearertoken}'
