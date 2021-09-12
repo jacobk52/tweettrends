@@ -3,5 +3,5 @@ from monkeylearn import MonkeyLearn
 
 def get_sentiment(data):
     m = MonkeyLearn(os.environ.get('MONKEYLEARNAPIKEY'))
-    response = m.classifiers.classify('cl_pi3C7JiL',data)
+    response = m.classifiers.classify(os.environ.get('MONKEYLEARNMODELID'),data)
     return response.body
