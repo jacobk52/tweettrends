@@ -23,10 +23,7 @@ def get_trends_by_location(location_id):
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
     response_json = response.json()
-    return [{
-        'name':h['name'],
-        'tweet_volume':h['tweet_volume']
-    } for h in response_json[0]['trends']]
+    return [h['name']for h in response_json[0]['trends']]
 
 def get_available_locations():
     endpoint = 'https://api.twitter.com/1.1/trends/available.json'
@@ -41,4 +38,8 @@ def get_available_locations():
         'country_code':l['countryCode']
     } for l in response_json]
 
-print(get_tweet_info_by_query('ronaldo')[0])
+def get_tweet_info_location(location_id):
+    trends = get_trends_by_location(location_id)
+    return [{trend:[i for i in get_tweet_info_by_query(trend)]}for trend in trends]
+
+print(get_tweet_info_location(2972))
