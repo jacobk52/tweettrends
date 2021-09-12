@@ -38,6 +38,6 @@ def get_available_locations():
         'country_code':l['countryCode']
     } for l in response_json]
 
-def get_tweet_info_location(location_id):
+def get_tweet_info_by_location(location_id):
     trends = get_trends_by_location(location_id)
-    return [{trend:[i for i in get_tweet_info_by_query(trend)]}for trend in trends]
+    return [{trend:[i for i in get_tweet_info_by_query(trend)]} for trend in trends]
