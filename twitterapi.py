@@ -23,7 +23,7 @@ def get_trends_by_location(location_id):
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
     response_json = response.json()
-    return [h['name']for h in response_json[0]['trends']]
+    return [h['name']for h in response_json[0]['trends']][:10]
 
 def get_available_locations():
     endpoint = 'https://api.twitter.com/1.1/trends/available.json'
