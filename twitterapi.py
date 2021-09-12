@@ -1,10 +1,10 @@
 import requests
 import os
 
-bearertoken=os.environ.get('TWITTER_API_BEARER_TOKEN')
+bearer_token=os.environ.get('TWITTER_API_BEARER_TOKEN')
 
 def bearer_authorization(a):
-    a.headers['Authorization']=f'Bearer {bearertoken}'
+    a.headers['Authorization']=f'Bearer {bearer_token}'
     return a
 
 def get_tweet_info_by_query(query):
@@ -19,7 +19,7 @@ def get_tweet_info_by_query(query):
 def get_trends_by_location(location_id):
     endpoint='https://api.twitter.com/1.1/trends/place.json'
     params={'id':location_id}
-    response=requests.get(endpoint,auth=bearer_authorization,params=params)
+    response=requests.get(endpoint,auth=bearer_authorization, params=params)
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
     response_json = response.json()

@@ -11,6 +11,6 @@ def get_sentiment_by_location(location_id):
         sentiments = get_sentiment(value)
         count={s:0 for s in SENTIMENTS}
         for sentiment in sentiments:
-            count[sentiment['classifications'][0]['tag_name']]+=1
+            count[sentiment['classifications'][0]['tag_name']] += 1
         ta.append({key:count})
     return ta
