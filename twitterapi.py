@@ -23,7 +23,7 @@ def get_trends_by_location(location_id):
     endpoint='https://api.twitter.com/1.1/trends/place.json'
     params={'id':location_id}
     response_json = get(endpoint, params)
-    return [h['name']for h in response_json[0]['trends']][:3]
+    return [h['name']for h in response_json[0]['trends']]
 
 def get_available_locations():
     endpoint = 'https://api.twitter.com/1.1/trends/available.json'
@@ -38,5 +38,3 @@ def get_available_locations():
 def get_tweet_info_by_location(location_id):
     trends = get_trends_by_location(location_id)
     return [{trend:[i for i in get_tweet_info_by_query(trend)]} for trend in trends]
-
-print(get_tweet_info_by_query('tammy')[0])
