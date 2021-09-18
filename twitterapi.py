@@ -15,7 +15,7 @@ def get(endpoint,params):
 
 def get_tweet_info_by_query(query):
     endpoint = 'https://api.twitter.com/2/tweets/search/recent'
-    params = {'query':query,'max_results':10}
+    params = {'query':query,'max_results':100}
     response_json = get(endpoint, params)
     return [d['text'] for d in response_json['data']]
 
