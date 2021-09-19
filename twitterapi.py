@@ -7,7 +7,7 @@ def bearer_authorization(a):
     a.headers['Authorization']=f'Bearer {bearer_token}'
     return a
 
-def get(endpoint,params):
+def get(endpoint, params):
     response = requests.get(endpoint, params=params, auth=bearer_authorization)
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
@@ -27,7 +27,7 @@ def get_trends_by_location(location_id):
 
 def get_available_locations():
     endpoint = 'https://api.twitter.com/1.1/trends/available.json'
-    response_json = get(endpoint,{})
+    response_json = get(endpoint, {})
     return [{
         'name':l['name'],
         'location_id':l['woeid'],
