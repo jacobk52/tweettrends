@@ -4,7 +4,7 @@ import os
 bearer_token=os.environ.get('TWITTER_API_BEARER_TOKEN')
 
 def bearer_authorization(a):
-    a.headers['Authorization']=f'Bearer {bearer_token}'
+    a.headers['Authorization'] = f'Bearer {bearer_token}'
     return a
 
 def get(endpoint, params):
@@ -15,7 +15,7 @@ def get(endpoint, params):
 
 def get_tweet_info_by_query(query):
     endpoint = 'https://api.twitter.com/2/tweets/search/recent'
-    params = {'query':query,'max_results':100}
+    params = {'query':query, 'max_results':100}
     response_json = get(endpoint, params)
     return [d['text'] for d in response_json['data']]
 
