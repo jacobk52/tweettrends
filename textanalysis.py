@@ -1,9 +1,8 @@
 from twitterapi import get_tweet_info_by_location
 from textanalysisapi import get_sentiment
 from constants import SENTIMENTS
-
-def get_sentiment_by_location(location_id):
-    trends = get_tweet_info_by_location(location_id)
+    
+def get_sentiment_by_location(trends):
     ta = []
     for trend in trends:
         key = next(iter(trend))
