@@ -20,7 +20,7 @@ def get_tweet_info_by_query(query):
     return [d['text'] for d in response_json['data']]
 
 def get_trends_by_location(location_id):
-    endpoint='https://api.twitter.com/1.1/trends/place.json'
+    endpoint = 'https://api.twitter.com/1.1/trends/place.json'
     params={'id':location_id}
     response_json = get(endpoint, params)
     return [h['name']for h in response_json[0]['trends']]
