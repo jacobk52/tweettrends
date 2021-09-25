@@ -1,5 +1,5 @@
 from twitterapi import get_tweet_info_by_location
-from textanalysisapi import get_sentiment
+from mocktextanalysisapi import mock_get_sentiment
 from constants import SENTIMENTS
     
 def get_sentiment_by_location(trends):
@@ -7,7 +7,7 @@ def get_sentiment_by_location(trends):
     for trend in trends:
         key = next(iter(trend))
         value = trend[key]
-        sentiments = get_sentiment(value)
+        sentiments = mock_get_sentiment(value)
         count={s:0 for s in SENTIMENTS}
         for sentiment in sentiments:
             count[sentiment['classifications'][0]['tag_name']] += 1
