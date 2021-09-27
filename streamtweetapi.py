@@ -16,7 +16,7 @@ def get_tweet_stream():
 
 def get_current_stream_rules():
     endpoint = 'https://api.twitter.com/2/tweets/search/stream/rules'
-    response = requests.get(endpoint,auth=bearer_authorization)
+    response = requests.get(endpoint, auth=bearer_authorization)
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
     return response.json()
