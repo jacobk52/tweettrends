@@ -7,7 +7,7 @@ def bearer_authorization(a):
     a.headers['Authorization'] = f'Bearer {bearer_token}'
     return a
 
-def get_tweet_stream():
+def get_stream():
     endpoint = 'https://api.twitter.com/2/tweets/search/stream'
     response = requests.get(endpoint, auth=bearer_authorization, stream=True)
     if response.status_code != 200:
